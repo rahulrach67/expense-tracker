@@ -5,7 +5,14 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// With this:
+app.use(cors({
+  origin: [
+    'https://6a06f3758d0a2f4752518e6a--gentle-haupia-651ac9.netlify.app',
+    'http://localhost:4200'
+  ],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
