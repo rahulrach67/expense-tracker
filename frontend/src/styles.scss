@@ -1,0 +1,75 @@
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-indigo, 600);
+$accent: mat-palette($mat-pink, A200);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6fb;
+  color: #2d3748;
+}
+
+.page-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  margin-bottom: 20px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  h1 { font-size: 24px; font-weight: 600; color: #1a202c; }
+}
+
+.income-color { color: #38a169 !important; }
+.expense-color { color: #e53e3e !important; }
+.badge-income { background: #c6f6d5; color: #276749; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; }
+.badge-expense { background: #fed7d7; color: #9b2c2c; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 500; }
+
+.mat-snack-bar-container { border-radius: 8px !important; }
+.snack-success .mat-simple-snackbar { color: #276749; }
+.snack-error .mat-simple-snackbar { color: #9b2c2c; }
+
+.loading-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.8);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+}
+
+mat-form-field { width: 100%; }
+.mat-dialog-content { min-width: 320px; }
+
+.summary-card {
+  border-radius: 12px;
+  padding: 20px 24px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  &.income { background: linear-gradient(135deg, #38a169, #276749); }
+  &.expense { background: linear-gradient(135deg, #e53e3e, #c53030); }
+  &.balance { background: linear-gradient(135deg, #4c51bf, #434190); }
+  .label { font-size: 13px; opacity: 0.85; margin-bottom: 8px; }
+  .amount { font-size: 28px; font-weight: 700; }
+  .icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); opacity: 0.2; font-size: 64px; }
+}
+
+table.mat-table { width: 100%; border-radius: 8px; overflow: hidden; }
+.mat-header-row { background: #f7fafc; }
+.mat-row:hover { background: #f7fafc; }
