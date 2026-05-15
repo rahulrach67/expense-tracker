@@ -3,7 +3,9 @@ const jwt = require('jsonwebtoken');
 const pool = require('../config/database');
 require('dotenv').config();
 
+
 exports.register = async (req, res) => {
+  
   const { name, email, password } = req.body;
   try {
     const exists = await pool.query('SELECT id FROM users WHERE email = $1', [email]);
@@ -21,6 +23,8 @@ exports.register = async (req, res) => {
     });
     res.status(201).json({ token, user });
   } catch (err) {
+    console.log("the errrrrrrrrrrrorrrrrrrrrrrrrrrrrrrrrrr becomeeeeeeeeeee",err);
+    
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };

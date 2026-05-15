@@ -16,6 +16,8 @@ export class AuthService {
   }
 
   register(name: string, email: string, password: string): Observable<any> {
+    console.log("the eniviiiiiiiiiirrrrrrrrrrrrrrrrr",localStorage);
+    
     return this.http.post(`${environment.apiUrl}/auth/register`, { name, email, password }).pipe(
       tap((res: any) => { localStorage.setItem('token', res.token); this.userSubject.next(res.user); })
     );
