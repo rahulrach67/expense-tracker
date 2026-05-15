@@ -1,0 +1,6 @@
+[build]
+  command = "ng build --prod"
+  publish = "dist/expense-tracker"
+
+[build.environment]
+  NODE_VERSION = "12.22.10"
