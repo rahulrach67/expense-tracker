@@ -55,6 +55,7 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {}
 
   onSubmit() {
+    
     if (this.form.invalid) return;
     this.loading = true;
     const { email, password } = this.form.value;

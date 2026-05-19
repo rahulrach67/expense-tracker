@@ -14,6 +14,8 @@ exports.getAll = async (req, res) => {
   if (search) { conditions.push(`(e.title ILIKE $${idx} OR e.notes ILIKE $${idx})`); params.push(`%${search}%`); idx++; }
 
   const where = conditions.join(' AND ');
+  console.log(idx,"the where becomeeeeeeeeee================================",where);
+  
   try {
     const countResult = await pool.query(
       `SELECT COUNT(*) FROM expenses e WHERE ${where}`, params
@@ -25,13 +27,15 @@ exports.getAll = async (req, res) => {
       `SELECT e.*, c.name as category_name, c.icon as category_icon, c.color as category_color
        FROM expenses e
        LEFT JOIN categories c ON e.category_id = c.id
-       WHERE ${where}
-       ORDER BY e.date DESC, e.created_at DESC
-       LIMIT $${idx} OFFSET $${idx + 1}`,
-      params
+  `
+
     );
+    console.log(params,"the datata becomeeeeeeeeeeeeeeeeeeeeeeeeeeeee======================",result.rows);
+    
     res.json({ data: result.rows, total, page: +page, limit: +limit, pages: Math.ceil(total / limit) });
   } catch (err) {
+    console.log("the eroor becomee=============================",err);
+    
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };

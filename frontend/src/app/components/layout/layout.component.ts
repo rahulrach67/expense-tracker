@@ -28,6 +28,19 @@ import { User } from '../../models/expense.model';
           <a mat-list-item routerLink="/categories" routerLinkActive="active">
             <mat-icon>category</mat-icon><span>Categories</span>
           </a>
+          <div class="nav-section">NEW FEATURES</div>
+          <a mat-list-item routerLink="/budget" routerLinkActive="active">
+            <mat-icon>account_balance_wallet</mat-icon><span>Budgets</span>
+          </a>
+          <a mat-list-item routerLink="/recurring" routerLinkActive="active">
+            <mat-icon>repeat</mat-icon><span>Recurring</span>
+          </a>
+          <a mat-list-item routerLink="/export" routerLinkActive="active">
+            <mat-icon>download</mat-icon><span>Export</span>
+          </a>
+          <a mat-list-item routerLink="/currency" routerLinkActive="active">
+            <mat-icon>currency_exchange</mat-icon><span>Currency</span>
+          </a>
         </mat-nav-list>
         <div class="sidenav-footer">
           <button mat-button (click)="logout()" class="logout-btn">
@@ -52,6 +65,7 @@ import { User } from '../../models/expense.model';
     .nav-list a mat-icon { color:#a0aec0; }
     .nav-list a.active, .nav-list a:hover { color:#fff; background:rgba(102,126,234,0.2); }
     .nav-list a.active mat-icon, .nav-list a:hover mat-icon { color:#667eea; }
+    .nav-section { padding:16px 16px 4px; font-size:10px; font-weight:700; color:#4a5568; letter-spacing:1px; text-transform:uppercase; }
     .sidenav-footer { padding:16px; border-top:1px solid rgba(255,255,255,0.1); }
     .logout-btn { color:#a0aec0; width:100%; justify-content:flex-start; gap:8px; }
     .logout-btn:hover { color:#fff; }

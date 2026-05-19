@@ -16,8 +16,8 @@ export class AuthService {
   }
 
   register(name: string, email: string, password: string): Observable<any> {
-    console.log("the eniviiiiiiiiiirrrrrrrrrrrrrrrrr",localStorage);
-    
+    console.log("the eniviiiiiiiiiirrrrrrrrrrrrrrrrr", localStorage);
+
     return this.http.post(`${environment.apiUrl}/auth/register`, { name, email, password }).pipe(
       tap((res: any) => { localStorage.setItem('token', res.token); this.userSubject.next(res.user); })
     );
@@ -36,8 +36,13 @@ export class AuthService {
 
   loadUser() {
     this.http.get<User>(`${environment.apiUrl}/auth/me`).subscribe(
-      user => this.userSubject.next(user),
-      () => this.logout()
+      user => {
+        console.log("USER LOADED", user);
+        this.userSubject.next(user);
+      },
+      (err) => {
+        console.log("ERROR IN /me", err);
+      }
     );
   }
 

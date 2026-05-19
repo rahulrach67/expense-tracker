@@ -7,6 +7,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { BudgetComponent } from './components/budget/budget.component';
+import { RecurringComponent } from './components/recurring/recurring.component';
+import { ExportComponent } from './components/export/export.component';
+import { CurrencyComponent } from './components/currency/currency.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -21,6 +25,10 @@ const routes: Routes = [
       { path: 'expenses', component: ExpensesComponent },
       { path: 'reports', component: ReportsComponent },
       { path: 'categories', component: CategoriesComponent },
+      { path: 'budget', component: BudgetComponent },
+      { path: 'recurring', component: RecurringComponent },
+      { path: 'export', component: ExportComponent },
+      { path: 'currency', component: CurrencyComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

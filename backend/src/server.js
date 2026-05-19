@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 3000;
 // With this:
 app.use(cors({
   origin: [
-    'https://6a06f3758d0a2f4752518e6a--gentle-haupia-651ac9.netlify.app',
-    'http://localhost:4200'
+    // 'https://6a06f3758d0a2f4752518e6a--gentle-haupia-651ac9.netlify.app',
+    'http://localhost:4300'
   ],
   credentials: true
 }));
@@ -21,6 +21,12 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/expenses', require('./routes/expenses'));
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/reports', require('./routes/reports'));
+
+// New Feature Routes
+app.use('/api/budgets', require('./routes/budgets'));
+app.use('/api/recurring', require('./routes/recurring'));
+app.use('/api/export', require('./routes/export'));
+app.use('/api/currency', require('./routes/currency'));
 
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date() }));

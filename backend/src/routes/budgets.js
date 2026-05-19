@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const ctrl = require('../controllers/budgetController');
+const auth = require('../middleware/auth');
+router.use(auth);
+router.get('/', ctrl.getBudgets);
+router.get('/summary', ctrl.getBudgetSummary);
+router.post('/', ctrl.setBudget);
+router.delete('/:id', ctrl.deleteBudget);
+module.exports = router;
