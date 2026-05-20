@@ -10,6 +10,8 @@ exports.summary = async (req, res) => {
        FROM expenses WHERE user_id=$1 AND date BETWEEN $2 AND $3 GROUP BY type`,
       [req.userId, start, end]
     );
+    console.log(req.userId, start, end,"the totals becomeeeeeeeeeeeeee===================",totals);
+    
     const byCategory = await pool.query(
       `SELECT c.name, c.icon, c.color, e.type, SUM(e.amount) as total, COUNT(*) as count
        FROM expenses e LEFT JOIN categories c ON e.category_id = c.id

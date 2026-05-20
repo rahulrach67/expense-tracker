@@ -27,6 +27,7 @@ exports.getAll = async (req, res) => {
       `SELECT e.*, c.name as category_name, c.icon as category_icon, c.color as category_color
        FROM expenses e
        LEFT JOIN categories c ON e.category_id = c.id
+       where e.user_id =${req.userId}
   `
 
     );
