@@ -10,7 +10,7 @@ import { Label } from 'ng2-charts';
     <div class="page-container">
       <div class="page-header">
         <h1>Dashboard</h1>
-        <span class="period-label">{{currentMonth}}</span>
+        <span class="period-label">{{currentDateTime}}</span>
       </div>
 
       <!-- Summary Cards -->
@@ -113,7 +113,8 @@ import { Label } from 'ng2-charts';
 export class DashboardComponent implements OnInit {
   report: ReportSummary | null = null;
   recentExpenses: Expense[] = [];
-  currentMonth = '';
+  currentDateTime: string = '';
+
 
   pieChartLabels: Label[] = [];
   pieChartData: number[] = [];
@@ -127,15 +128,21 @@ export class DashboardComponent implements OnInit {
   ];
   barOptions: ChartOptions = { responsive: true, maintainAspectRatio: false };
 
-  constructor(private expenseService: ExpenseService) {}
+  constructor(private expenseService: ExpenseService) { }
 
   ngOnInit() {
     const now = new Date();
-    this.currentMonth = now.toLocaleString('default', { month: 'long', year: 'numeric' });
+  this.updateTime();
+
+  setInterval(() => {
+    this.updateTime();
+  }, 1000); // updates every second
     const start = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
     const end = now.toISOString().split('T')[0];
 
     this.expenseService.getReport(start, end).subscribe(r => {
+      console.log("the responceeeeeeeeeeeeeeeeeeeeeeeveeeeeeeeeeeeeeeeeeeee=================", r);
+
       this.report = r;
       // Pie chart - expenses by category
       const expCats = r.byCategory.filter(c => c.type === 'expense');
@@ -159,4 +166,18 @@ export class DashboardComponent implements OnInit {
       this.recentExpenses = r.data;
     });
   }
+
+updateTime() {
+  const now = new Date();
+
+  this.currentDateTime = now.toLocaleString('en-IN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  });
+}
 }
