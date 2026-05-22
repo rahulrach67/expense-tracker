@@ -190,3 +190,11 @@ tr:hover td { background: var(--bg-hover); }
 @media (max-width: 600px) {
   .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
 }
+
+.mat-drawer-inner-container
+ {
+    width: 100%;
+    height: 100%;
+    overflow: clip;
+    -webkit-overflow-scrolling: touch;
+}
